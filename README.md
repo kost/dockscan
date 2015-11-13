@@ -1,7 +1,10 @@
 dockscan
 ===========
 
+![logo](https://raw.githubusercontent.com/kost/dockscan/master/docs/dockscan.png)
+
 Scan Docker installations for security issues and vulnerabilities.
+
 
 ## Features
 
