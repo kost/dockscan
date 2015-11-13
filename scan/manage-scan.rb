@@ -91,7 +91,7 @@ def scan (url, opts, logger)
 				mod.scandata=@auditoutput
 				output=mod.report(nil)
 				if opts.key?("output") then
-					reportfilename = reportfile
+					reportfilename = opts["output"]
 					reportfilename << mod.file_extension
 					File.open(reportfilename, 'w') { |file| file.write(output) }
 				else
