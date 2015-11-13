@@ -1,0 +1,11 @@
+class AuditModule < GenericModule
+	attr_accessor :scandata
+
+	def info
+		raise "#{self.class.name} doesn't implement `handle_command`!"
+	end
+
+	def check(dockercheck)
+		raise "#{self.class.name} doesn't implement `handle_command`!"
+	end
+end
