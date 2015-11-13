@@ -13,7 +13,7 @@ Scan Docker installations for security issues and vulnerabilities.
 ## Requirements
 
 - Ruby
-- Ruby gem: docker
+- Ruby gem: docker-api (docker)
 
 
 ## Usage
