@@ -1,6 +1,3 @@
-require 'scan/scan-issue'
-require 'pry'
-
 class DockerInsecureRegistries < AuditModule
 
 	def info
