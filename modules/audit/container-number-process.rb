@@ -1,14 +1,14 @@
 class ContainerNumberProcess < AuditModule
 
 	def info
-		return 'This plugin checks if storage driver is aufs'
+		return 'This plugin checks number of container processes'
 	end
 
 	def check(dockercheck)
 		sp=ScanPlugin.new
 		si=ScanIssue.new 
 		si.title="Container have higher number of processess"
-		si.description="Docker daemon reports it is running aufs as storage driver.\nThis is not recommended for production as it might have problems and security issues."
+		si.description="Container have more than allowable number of processes.\nThis is not recommended for production as it does not provide intended isolation."
 		si.solution="It is recommended to have single process inside container. If you have more than one process, it is recommended to split them in separate containers."
 		si.severity=4 # Low
 		si.risk = { "cvss" => 3.2 } 
