@@ -5,6 +5,8 @@ class ContainerNumberProcess < AuditModule
 	end
 
 	def check(dockercheck)
+
+		limit=1
 		sp=ScanPlugin.new
 		si=ScanIssue.new 
 		si.title="Container have higher number of processess"
@@ -18,9 +20,9 @@ class ContainerNumberProcess < AuditModule
 			sp.state="run"
 			scandata["GetContainersRunning"].obj.each do |container|
 				ps=container.top
-				if ps.count > 1 then
+				if ps.count > limit then
 					sp.state="vulnerable"
-					sp.output << "More than 1 process in #{container.id}: #{ps.count}\n"
+					sp.output << idcontainer(container) << " has more than #{limit} process(es): #{ps.count}\n"
 					ps.each do |process|
 						sp.output << process["CMD"] << "\n"
 					end

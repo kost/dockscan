@@ -7,8 +7,8 @@ class ContainerSSHProcess < AuditModule
 	def check(dockercheck)
 		sp=ScanPlugin.new
 		si=ScanIssue.new 
-		si.title="Container have SSH process"
-		si.description="Docker daemon reports it is running aufs as storage driver.\nThis is not recommended for production as it might have problems and security issues."
+		si.title="Container have SSH server process"
+		si.description="Docker daemon reports it is running SSH daemon inside container.\nThis is not recommended practice as it provides yet another attack surface for attackers and wastes computer resources."
 		si.solution="It is recommended to remove SSH daemon/client from container. It is recommended to use docker exec command to execute commands inside container."
 		si.severity=4 # Low
 		si.risk = { "cvss" => 3.2 } 
@@ -20,7 +20,7 @@ class ContainerSSHProcess < AuditModule
 				ps=container.top
 				ps.each do |process|
 					if process["CMD"].include?("ssh") then
-						sp.output << "SSH process in #{container.id}: " << process["CMD"] << "\n"
+						sp.output << idcontainer(container) << " has SSH process running: " << process["CMD"] << "\n"
 						sp.state="vulnerable"
 						break
 					end
