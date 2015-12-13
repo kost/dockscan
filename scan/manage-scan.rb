@@ -91,7 +91,7 @@ def scan (url, opts, logger)
 			@auditoutput[mod.class.name]=mod.check('test')
 		rescue Exception => e
 			@log.info("Error executing audit module: #{modclass.name}")
-			@log.debug("Error executing audit module: #{e.backtrace}")
+			@log.debug("Error executing audit module: #{e.to_s} #{e.backtrace}")
 			failed << modclass.name
 		end
 		# pp @auditoutput[mod.class.name]
