@@ -17,7 +17,7 @@ class ReportStdout < ReportModule
 		output << "Dockscan Report\n\n"
 		
 		issues = sortvulns
-		7.downto(4) do |sev|
+		7.downto(3) do |sev|
 			if issues.key?(sev)
 				output << sev2word(sev) << "\n"
 				issues[sev].each do |v|
