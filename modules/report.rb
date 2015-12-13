@@ -16,7 +16,7 @@ class ReportModule < GenericModule
 	def sortvulns
 		severity_sorted=Hash.new
 		scandata.each do |classname,scanissue|
-			if scanissue.state == "vulnerable" then
+			if scanissue.state == "vulnerable" or scanissue.state=="info" then
 				severity_sorted[scanissue.vuln.severity] ||= []
 				severity_sorted[scanissue.vuln.severity] << scanissue
 			end
@@ -30,6 +30,14 @@ class ReportModule < GenericModule
 
 	def file_extension
 		return ".unknown"
+	end
+
+	def getkey(hsh,hkey)
+		if hsh.has_key?(hkey) then
+			return hsh[hkey]
+		else
+			return ''
+		end
 	end
 	
 	def sev2word(sev)

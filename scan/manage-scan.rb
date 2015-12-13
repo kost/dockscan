@@ -133,7 +133,7 @@ def scan (url, opts, logger)
 					end
 				rescue Exception => e
 					@log.info("Error executing report module: #{modclass.name}")
-					@log.debug("Error executing report module: #{e.backtrace}")
+					@log.debug("Error executing report module: #{e.to_s} #{e.backtrace}")
 					failed << modclass.name
 				end
 				@log.debug(output)
