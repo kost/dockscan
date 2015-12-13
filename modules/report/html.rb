@@ -108,7 +108,7 @@ class ReportHTML < ReportModule
 
 .VulnerabilityRED tr:first-child td{
 	background-color:#ff0000;
-	color:#000000;
+	color:#ffffff;
 }
 
 .VulnerabilityORANGE tr:first-child td{
