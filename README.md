@@ -18,9 +18,15 @@ Scan Docker installations for security issues and vulnerabilities.
 
 ## Requirements
 
-- Ruby
+- Ruby 2.0 or above (1.9.x does not work!)
 - Ruby gem: docker-api (docker)
 
+
+## Installation
+
+You can install dockscan by installing dockscan gem:
+
+`gem install dockscan`
 
 ## Usage
 
@@ -28,15 +34,15 @@ Typical usage for scanning docker installation.
 
 If you wish to scan local Docker installation:
 
-`dockscan.rb unix:///var/run/docker.sock`
+`dockscan unix:///var/run/docker.sock`
 
 If you wish to scan remote Docker installation and produce HTML report:
 
-`dockscan.rb -r html -o myreport -v tcp://example.com:5422`
+`dockscan -r html -o myreport -v tcp://example.com:5422`
 
 If you wish to scan remote Docker installation and produce text report:
 
-`dockscan.rb -r txt -o myreport -v tcp://example.com:5422`
+`dockscan -r txt -o myreport -v tcp://example.com:5422`
 
 
 ## Environment variables
