@@ -1,3 +1,6 @@
+module Dockscan
+module Module
+
 class AuditModule < GenericModule
 	attr_accessor :scandata
 
@@ -23,4 +26,7 @@ class AuditModule < GenericModule
 	def check(dockercheck)
 		raise "#{self.class.name} doesn't implement `handle_command`!"
 	end
-end
+end # class
+
+end # Module
+end # Dockscan

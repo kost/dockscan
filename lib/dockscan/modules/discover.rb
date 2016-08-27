@@ -1,3 +1,6 @@
+module Dockscan
+module Module
+
 class DiscoverModule < GenericModule
 	attr_accessor :scandata
 	def info
@@ -7,4 +10,7 @@ class DiscoverModule < GenericModule
 	def run
 		raise "#{self.class.name} doesn't implement `handle_command`!"
 	end
-end
+end # class
+
+end # Module
+end # Dockscan

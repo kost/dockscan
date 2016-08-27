@@ -1,3 +1,6 @@
+module Dockscan
+module Module
+
 class ReportModule < GenericModule
 	attr_accessor :scandata
 
@@ -66,4 +69,7 @@ class ReportModule < GenericModule
 	def report(opts)
 		raise "#{self.class.name} doesn't implement `handle_command`!"
 	end
-end
+end # Class
+
+end # Module
+end # Dockscan

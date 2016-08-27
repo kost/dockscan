@@ -1,3 +1,6 @@
+module Dockscan
+module Module
+
 class GenericModule
   def self.modules
     @modules ||= []
@@ -8,4 +11,7 @@ class GenericModule
     
     @modules << klass
   end
-end
+end # Class
+
+end # Module
+end # Dockscan
