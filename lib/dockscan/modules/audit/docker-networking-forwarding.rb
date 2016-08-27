@@ -1,12 +1,12 @@
-class DockerIPV4Forwarding < AuditModule
+class DockerIPV4Forwarding < Dockscan::Modules::AuditModule
 
 	def info
 		return 'This plugin checks if docker is running with ipv4 forwarding enabled'
 	end
 
 	def check(dockercheck)
-		sp=ScanPlugin.new
-		si=ScanIssue.new 
+		sp=Dockscan::Scan::Plugin.new
+		si=Dockscan::Scan::Issue.new
 		si.title="Docker running with IPv4 forwarding enabled"
 		si.description="Docker daemon reports it is running daemon with IPv4 forwarding enabled.\nThis is not recommended for production as it forwards network packets without rules."
 		si.solution="It is recommended to disable IPv4 forwarding by default."

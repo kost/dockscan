@@ -1,5 +1,5 @@
 module Dockscan
-module Module
+module Modules
 
 class DiscoverModule < GenericModule
 	attr_accessor :scandata

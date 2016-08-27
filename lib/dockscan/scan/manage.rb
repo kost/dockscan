@@ -44,21 +44,28 @@ def scan (url, opts, logger)
 		return
 	end
 
-	@log.info("Loading discovery modules...")
+	moduledirs=Array.new
+	if moduledirs.empty? then
+		moduledirs.push File.expand_path("../modules", File.dirname(__FILE__))
+	end
 
-	Dir["./modules/discover/*.rb"].each do |f| 
-		@log.info("Loading discovery module: #{f}")
-		begin
-			require f 
-		rescue SyntaxError => se
-			@log.info("Error loading audit module: #{f}")
-			@log.debug("Error executing audit module: #{se.backtrace}")
-			failed << f
+	@log.info("Loading discovery modules...")
+	moduledirs.each do |moduledir|
+		@log.debug("Loading dir: #{moduledir}")
+		Dir["#{moduledir}/discover/*.rb"].each do |f|
+			@log.info("Loading discovery module: #{f}")
+			begin
+				require f
+			rescue SyntaxError => se
+				@log.info("Error loading audit module: #{f}")
+				@log.debug("Error executing audit module: #{se.backtrace}")
+				failed << f
+			end
 		end
 	end
 
 	@log.info("Running discovery modules...")
-	DiscoverModule.modules.each do |modclass|
+	Dockscan::Modules::DiscoverModule.modules.each do |modclass|
 		@log.info("Running discovery module: #{modclass.name}")
 		begin
 			mod=modclass.new
@@ -74,19 +81,22 @@ def scan (url, opts, logger)
 
 
 	@log.info("Loading audit modules...")
-	Dir["./modules/audit/*.rb"].each do |f| 
-		@log.info("Loading audit module: #{f}")
-		begin
-			require f 
-		rescue SyntaxError => se
-			@log.info("Error loading audit module: #{f}")
-			@log.debug("Error executing audit module: #{se.backtrace}")
-			failed << f
+	moduledirs.each do |moduledir|
+		@log.debug("Loading dir: #{moduledir}")
+		Dir["#{moduledir}/audit/*.rb"].each do |f|
+			@log.info("Loading audit module: #{f}")
+			begin
+				require f
+			rescue SyntaxError => se
+				@log.info("Error loading audit module: #{f}")
+				@log.debug("Error executing audit module: #{se.backtrace}")
+				failed << f
+			end
 		end
 	end
 
 	@log.info("Running audit modules...")
-	AuditModule.modules.each do |modclass|
+	Dockscan::Modules::AuditModule.modules.each do |modclass|
 		@log.info("Running audit module: #{modclass.name}")
 		begin
 			mod=modclass.new
@@ -101,20 +111,21 @@ def scan (url, opts, logger)
 	end
 
 	@log.info("Loading report modules...")
-	Dir["./modules/report/*.rb"].each do |f| 
-		@log.info("Loading report #{f}")
-		begin
-			require f 
-		rescue SyntaxError => se
-			@log.info("Error loading report module: #{f}")
-			@log.debug("Error executing report module: #{se.backtrace}")
-			failed << f
+	moduledirs.each do |moduledir|
+		Dir["#{moduledir}/report/*.rb"].each do |f|
+			@log.info("Loading report #{f}")
+			begin
+				require f
+			rescue SyntaxError => se
+				@log.info("Error loading report module: #{f}")
+				@log.debug("Error executing report module: #{se.backtrace}")
+				failed << f
+			end
 		end
 	end
 
-
 	@log.info("Running report modules...")
-	ReportModule.modules.each do |modclass|
+	Dockscan::Modules::ReportModule.modules.each do |modclass|
 		@log.info("Running report module: #{modclass.name}")
 		mod=modclass.new
 		if opts.key?("report") then

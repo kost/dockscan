@@ -1,4 +1,4 @@
-class ContainerNumberProcess < AuditModule
+class ContainerNumberProcess < Dockscan::Modules::AuditModule
 
 	def info
 		return 'This plugin checks number of container processes'
@@ -7,8 +7,8 @@ class ContainerNumberProcess < AuditModule
 	def check(dockercheck)
 
 		limit=1
-		sp=ScanPlugin.new
-		si=ScanIssue.new 
+		sp=Dockscan::Scan::Plugin.new
+		si=Dockscan::Scan::Issue.new
 		si.title="Container have higher number of processess"
 		si.description="Container have more than allowable number of processes.\nThis is not recommended for production as it does not provide intended isolation."
 		si.solution="It is recommended to have single process inside container. If you have more than one process, it is recommended to split them in separate containers."

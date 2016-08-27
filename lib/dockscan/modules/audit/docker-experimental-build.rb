@@ -1,12 +1,12 @@
-class DockerExperimentalBuild < AuditModule
+class DockerExperimentalBuild < Dockscan::Modules::AuditModule
 
 	def info
 		return 'This plugin checks if docker is running Experimental Build'
 	end
 
 	def check(dockercheck)
-		sp=ScanPlugin.new
-		si=ScanIssue.new 
+		sp=Dockscan::Scan::Plugin.new
+		si=Dockscan::Scan::Issue.new
 		si.title="Running Experimental version of Docker."
 		si.description="Docker daemon reports it is running ExperimentalBuild.\nThis is not recommended for production as it might have problems and security issues."
 		si.solution="It is recommended to replace Docker version with stable and production ready one."

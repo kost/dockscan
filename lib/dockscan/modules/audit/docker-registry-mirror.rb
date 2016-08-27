@@ -1,12 +1,12 @@
-class DockerRegistryMirror < AuditModule
+class DockerRegistryMirror < Dockscan::Modules::AuditModule
 
 	def info
 		return 'This plugin checks if mirror registries are in use'
 	end
 
 	def check(dockercheck)
-		sp=ScanPlugin.new
-		si=ScanIssue.new 
+		sp=Dockscan::Scan::Plugin.new
+		si=Dockscan::Scan::Issue.new
 		si.title="Docker registries are not mirrored"
 		si.description="Docker daemon reports it is running configuration without registry mirrors.\nIf you set up local mirror, your docker host does not have to go directly to internet if not needed."
 		si.solution="It is recommended to setup mirror registry."

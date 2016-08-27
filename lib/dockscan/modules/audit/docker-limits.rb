@@ -1,12 +1,12 @@
-class DockerLimits < AuditModule
+class DockerLimits < Dockscan::Modules::AuditModule
 
 	def info
 		return 'This plugin checks if docker is running with defined limits'
 	end
 
 	def check(dockercheck)
-		sp=ScanPlugin.new
-		si=ScanIssue.new 
+		sp=Dockscan::Scan::Plugin.new
+		si=Dockscan::Scan::Issue.new
 		si.title="Docker running without defined limits"
 		si.description="Docker daemon reports it is running daemon without defined limits.\nThis is not recommended as offending containers could use up all resources."
 		si.solution="It is recommended to define docker limits."

@@ -1,13 +1,13 @@
 require 'docker'
 
-class GetDockerInfo < DiscoverModule
+class GetDockerInfo < Dockscan::Modules::DiscoverModule
 
 	def info
 		return 'Info discovery module'
 	end
 
 	def run
-		sp=ScanPlugin.new
+		sp=Dockscan::Scan::Plugin.new
 		sp.obj = Docker.info
 		sp.output = sp.obj.map{|k,v| "#{k}=#{v}"}.join("\n")
 		sp.state = "run"

@@ -1,12 +1,12 @@
-class DockerStorageDriverAufs < AuditModule
+class DockerStorageDriverAufs < Dockscan::Modules::AuditModule
 
 	def info
 		return 'This plugin checks if storage driver is aufs'
 	end
 
 	def check(dockercheck)
-		sp=ScanPlugin.new
-		si=ScanIssue.new 
+		sp=Dockscan::Scan::Plugin.new
+		si=Dockscan::Scan::Issue.new
 		si.title="Running aufs as storage driver"
 		si.description="Docker daemon reports it is running aufs as storage driver.\nThis is not recommended for production as it might have problems and security issues."
 		si.solution="It is recommended to use devicemapper instead of aufs storage driver. Actually, you should use the storage driver that is best supported by your vendor."

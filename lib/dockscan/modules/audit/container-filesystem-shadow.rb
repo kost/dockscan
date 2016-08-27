@@ -1,12 +1,12 @@
-class ContainerFileSystemShadow < AuditModule
+class ContainerFileSystemShadow < Dockscan::Modules::AuditModule
 
 	def info
 		return 'This plugin checks /etc/shadow for problems'
 	end
 
 	def check(dockercheck)
-		sp=ScanPlugin.new
-		si=ScanIssue.new 
+		sp=Dockscan::Scan::Plugin.new
+		si=Dockscan::Scan::Issue.new
 		si.title="Container have passwordless users in shadow"
 		si.description="Container have vulnerable entries in /etc/shadow.\nIt allows attacker to login or switch to user without password."
 		si.solution="It is recommended to set password for user or to lock user account."

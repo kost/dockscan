@@ -96,10 +96,10 @@ end.parse!
 
 # start scan
 if ARGV.empty? 
-	ManageScan.new.scan(nil, $options, @log) 
+	Dockscan::Scan::Manage.new.scan(nil, $options, @log)
 else
 	ARGV.each do |url|
-		ManageScan.new.scan(url, $options, @log)
+		Dockscan::Scan::Manage.new.scan(url, $options, @log)
 	end
 end
 

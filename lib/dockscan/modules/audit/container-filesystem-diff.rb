@@ -1,4 +1,4 @@
-class ContainerFilesystemDiff < AuditModule
+class ContainerFilesystemDiff < Dockscan::Modules::AuditModule
 
 	def info
 		return 'This plugin checks for filesystem differences'
@@ -7,8 +7,8 @@ class ContainerFilesystemDiff < AuditModule
 	def check(dockercheck)
 
 		limit=5
-		sp=ScanPlugin.new
-		si=ScanIssue.new 
+		sp=Dockscan::Scan::Plugin.new
+		si=Dockscan::Scan::Issue.new
 		si.title="Container have higher number of changed files"
 		si.description="Container have high number of changed files which is not recommended practice.\nThis is not recommended for production as data can be lost. It can also mean successful break in attempt."
 		si.solution="It is recommended to have minimal number of changed files inside container and do not store data inside container. It is recommended to use volumes."

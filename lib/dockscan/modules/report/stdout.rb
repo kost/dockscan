@@ -1,4 +1,4 @@
-class ReportStdout < ReportModule
+class ReportStdout < Dockscan::Modules::ReportModule
 
 	def info
 		return 'This plugin produces brief stdout reports'

@@ -1,4 +1,4 @@
-class ReportText < ReportModule
+class ReportText < Dockscan::Modules::ReportModule
 
 	def info
 		return 'This plugin produces text reports'

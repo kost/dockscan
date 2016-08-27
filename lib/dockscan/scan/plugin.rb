@@ -7,7 +7,7 @@ class Plugin
 
 	def initialize
 		state="untested"
-		vuln = ScanIssue.new
+		vuln = Dockscan::Scan::Issue.new
 	end
 end # Plugin
 end # Scan

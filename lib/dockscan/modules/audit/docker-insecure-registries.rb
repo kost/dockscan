@@ -1,12 +1,12 @@
-class DockerInsecureRegistries < AuditModule
+class DockerInsecureRegistries < Dockscan::Modules::AuditModule
 
 	def info
 		return 'This plugin checks if insecure registries in use'
 	end
 
 	def check(dockercheck)
-		sp=ScanPlugin.new
-		si=ScanIssue.new 
+		sp=Dockscan::Scan::Plugin.new
+		si=Dockscan::Scan::Issue.new
 		si.title="Insecure registries in use"
 		si.description="Docker daemon reports it is running configuration with insecure registries.\nThis is not recommended as attacker is able to deploy malicious images to registries."
 		si.solution="It is recommended to use secure registries and configuration without insecure registries."

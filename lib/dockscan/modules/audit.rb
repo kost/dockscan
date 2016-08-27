@@ -1,5 +1,5 @@
 module Dockscan
-module Module
+module Modules
 
 class AuditModule < GenericModule
 	attr_accessor :scandata

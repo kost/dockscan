@@ -1,4 +1,4 @@
-class ReportHTML < ReportModule
+class ReportHTML < Dockscan::Modules::ReportModule
 
 	def info
 		return 'This plugin produces HTML reports'
