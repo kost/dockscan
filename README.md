@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/kost/dockscan.png)](https://travis-ci.org/kost/dockscan)
+[![Coverage Status](https://coveralls.io/repos/kost/dockscan/badge.png?branch=master)](https://coveralls.io/r/kost/dockscan?branch=master)
+
 dockscan
 ===========
 
