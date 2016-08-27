@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Security vulnerability and audit scanner for Docker installations.}
   spec.description   = %q{security vulnerability and audit scanner for Docker installations.}
-  spec.homepage      = "https://github.com/kost/"
+  spec.homepage      = "https://github.com/kost/dockscan"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
