@@ -1,4 +1,6 @@
-class ScanIssue
+module Dockscan
+module Scan
+class Issue
 	attr_accessor :severity, :description, :solution, :title, :tags, :references, :risk, :reflinks
 
 	def initialize
@@ -11,4 +13,6 @@ class ScanIssue
 		risk=Hash.new
 		reflinks=Hash.new
 	end
-end
+end # Issue
+end # Scan
+end # Dockscan

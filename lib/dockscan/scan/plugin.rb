@@ -1,10 +1,14 @@
-require './scan/scan-issue.rb'
+require 'dockscan/scan/issue'
 
-class ScanPlugin
+module Dockscan
+module Scan
+class Plugin
 	attr_accessor :state, :output, :obj, :vuln, :cname
 
 	def initialize
 		state="untested"
 		vuln = ScanIssue.new
 	end
-end
+end # Plugin
+end # Scan
+end # Dockscan

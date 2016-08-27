@@ -1,15 +1,18 @@
 require 'docker'
 
-require 'modules/genmodule'
-require 'modules/discover'
-require 'modules/audit'
-require 'modules/report'
+require 'dockscan/modules/genmodule'
+require 'dockscan/modules/discover'
+require 'dockscan/modules/audit'
+require 'dockscan/modules/report'
 
-require 'scan/scanplugin'
+require 'dockscan/scan/plugin'
 
 require 'pp'
 
-class ManageScan
+module Dockscan
+module Scan
+class Manage
+
 attr_accessor :log
 
 def initialize
@@ -152,4 +155,7 @@ def scan (url, opts, logger)
 	end
 end
 
-end
+end # Class
+end # Scan
+end # Dockscan
+
